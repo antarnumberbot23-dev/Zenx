@@ -1077,8 +1077,17 @@ async def monitor_loop(app):
                         panel_url = settings.get("panel_url", f"https://t.me/Antar_Number_Bot?start={ADMIN_ID}")
                         channel_url = settings.get("channel_url", "https://t.me/method_channel23")
                         masked = mask_number(clean_num)
-                        user_msg = f"{flag_tg} {app_em} +{clean_num}"
-                        group_msg = f"{flag_tg} {app_em} +{masked}"
+                        # ✅ UPDATE: ইউজার মেসেজে সার্ভিসের নাম যোগ করা হয়েছে
+                        user_msg = (
+                            f"{flag_tg} {app_em} +{clean_num}\n"
+                            f"📱 <b>SERVICE:</b> <code>{html.escape(purchased_app)}</code>"
+                        )
+                        # ✅ UPDATE: গ্রুপ মেসেজে সার্ভিসের নাম + OTP যোগ করা হয়েছে
+                        group_msg = (
+                            f"{flag_tg} {app_em} +{masked}\n"
+                            f"📱 <b>SERVICE:</b> <code>{html.escape(purchased_app)}</code>\n"
+                            f"🔑 <b>OTP:</b> <code>{html.escape(str(otp_code))}</code>"
+                        )
                         user_kb = InlineKeyboardMarkup([[btn_copy]])
                         group_kb = InlineKeyboardMarkup([[btn_copy],
                             [InlineKeyboardButton(" NUMBER", url=panel_url),
@@ -1701,8 +1710,7 @@ async def show_banned_users_list(update, context):
     text += f"\n📊 Total: {len(banned_list)}"
     await update.message.reply_text(text, parse_mode="Markdown", reply_markup=system_config_keyboard())
 
-# ==================== FORCE JOIN (FIXED — NO style IN InlineKeyboardButton) ====================
-
+# ==================== FORCE JOIN ====================
 async def check_force_join(update, context):
     """Check if user joined all force-join channels. Returns True if allowed."""
     channels = get_all_force_channels()
