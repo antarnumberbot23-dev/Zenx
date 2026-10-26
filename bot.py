@@ -23,7 +23,7 @@ from telegram import (
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters, CallbackQueryHandler
 
 # ==================== LOCAL CONFIGURATION ====================
-CONFIG_BOT_TOKEN = "8629485430:AAENhCOk327r7-5KFrF4IPZGkWq_Aqx-b7c"
+CONFIG_BOT_TOKEN = "8629485430:AAEjHNVRss-ByHdk8mUnWGJZoentgCnwjfs"
 CONFIG_ZENEX_API_KEY = "ZNX_MDVA3IGQY734GDB20K3TKZLX"
 CONFIG_ZENEX_BASE_URL = "https://api.zenexnetwork.com"
 CONFIG_ADMIN_ID = 8671743597
